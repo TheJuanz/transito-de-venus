@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El Tránsito de Venus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-home">
+
+  <!-- ============================================================
+       NAVEGACIÓN MULTIPÁGINA
+       ============================================================ -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-dot"></span>
+      TRÁNSITO DE VENUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"         class="active">Inicio</a></li>
+      <li><a href="sol.html">El Sol</a></li>
+      <li><a href="venus.html">Venus</a></li>
+      <li><a href="tierra.html">Tierra</a></li>
+      <li><a href="exoplanetas.html">Simulación</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       CANVAS ESTRELLAS DE FONDO (dinámico)
+       ============================================================ -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <div class="hero">
+    <div class="hero-label">FENÓMENO ASTRONÓMICO</div>
+    <h1 class="hero-title">El Tránsito<br/><em>de Venus</em></h1>
+    <p class="hero-sub">Un punto negro diminuto cruzando el disco solar.<br/>Un evento que cambió nuestra comprensión del universo.</p>
+    <a href="#explicacion" class="btn-primary">Explorar el fenómeno ↓</a>
+  </div>
+
+  <!-- ============================================================
+       EXPLICACIÓN
+       ============================================================ -->
+  <div class="info-block" id="explicacion">
+    <div class="info-inner">
+      <div class="info-card">
+        <div class="info-card-num">01</div>
+        <h3>¿Qué es el Tránsito?</h3>
+        <p>El tránsito de Venus ocurre cuando el planeta Venus pasa directamente entre la Tierra y el Sol, siendo visible desde la superficie terrestre como un pequeño disco oscuro que se desplaza lentamente sobre la brillante cara solar.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-num">02</div>
+        <h3>¿Cómo Ocurre?</h3>
+        <p>Requiere una alineación casi perfecta: Sol, Venus y Tierra deben estar en el mismo plano. Venus orbita el Sol cada 224 días, pero su órbita está inclinada 3.4° respecto a la de la Tierra, por lo que los tránsitos son eventos extraordinariamente raros.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-num">03</div>
+        <h3>¿Por qué es Poco Frecuente?</h3>
+        <p>Los tránsitos de Venus ocurren en pares separados por 8 años, pero estos pares se repiten solo cada 105 o 121 años. El último par ocurrió en 2004 y 2012. El próximo no será hasta el año 2117.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       VISUALIZACIÓN INTERACTIVA — planetas clickeables
+       ============================================================ -->
+  <div class="viz-section" id="viz-section">
+    <div class="viz-label">SIMULACIÓN INTERACTIVA — Haz clic en los planetas</div>
+    <div class="viz-container">
+      <div class="sun-rays"></div>
+
+      <!-- EL SOL — redirige a sol.html -->
+      <a href="sol.html" class="celestial-body sun" id="viz-sun" title="Conoce más sobre el Sol">
+        <div class="sun-glow"></div>
+        <div class="sun-surface"><div class="sun-corona"></div></div>
+        <div class="body-label">SOL<br/><span>Click para más info</span></div>
+      </a>
+
+      <!-- VENUS — redirige a venus.html -->
+      <div class="transit-orbit">
+        <a href="venus.html" class="celestial-body venus" id="viz-venus" title="Conoce más sobre Venus">
+          <div class="planet-surface venus-surface"></div>
+          <div class="body-label">VENUS<br/><span>Click para más info</span></div>
+        </a>
+      </div>
+
+      <!-- TIERRA — redirige a tierra.html -->
+      <a href="tierra.html" class="celestial-body earth" id="viz-earth" title="Conoce más sobre la Tierra">
+        <div class="planet-surface earth-surface"></div>
+        <div class="earth-moon"></div>
+        <div class="body-label">TIERRA<br/><span>Click para más info</span></div>
+      </a>
+
+      <div class="alignment-line"></div>
+      <div class="distance-label left">108 mill. km</div>
+      <div class="distance-label right">150 mill. km</div>
+    </div>
+    <p class="viz-caption">La alineación Sol–Venus–Tierra produce el fenómeno del tránsito. Las distancias y tamaños no están a escala.</p>
+  </div>
+
+  <!-- ============================================================
+       ESTADÍSTICAS RÁPIDAS
+       ============================================================ -->
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num">6<span>h</span></div>
+      <div class="stat-desc">Duración aproximada del tránsito</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">105<span>años</span></div>
+      <div class="stat-desc">Entre ciclos de pares de tránsitos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2117</div>
+      <div class="stat-desc">Próximo tránsito de Venus</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1/30</div>
+      <div class="stat-desc">Tamaño de Venus vs el Sol</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       LÍNEA DE TIEMPO HISTÓRICA INTERACTIVA
+       ============================================================ -->
+  <div class="timeline-section" id="timeline-section">
+    <div class="timeline-section-header">
+      <div class="section-tag">HISTORIA</div>
+      <h2 class="section-title">Cronología del <em>Tránsito de Venus</em></h2>
+      <p class="section-sub">Haz clic en cada evento para expandir la información</p>
+    </div>
+    <div class="htimeline" id="htimeline">
+
+      <div class="ht-item" data-index="0">
+        <div class="ht-dot"></div>
+        <div class="ht-year">1639</div>
+        <div class="ht-card">
+          <h4>Primera Observación Registrada</h4>
+          <div class="ht-body">
+            <p>Jeremiah Horrocks, astrónomo inglés de 20 años, fue el primero en observar y registrar el tránsito de Venus el 4 de diciembre de 1639. Calculó la posición del planeta con meses de anticipación y realizó la observación desde su casa en Much Hoole, Lancashire. Su trabajo fue publicado póstumamente en 1662.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-item" data-index="1">
+        <div class="ht-dot"></div>
+        <div class="ht-year">1716</div>
+        <div class="ht-card">
+          <h4>El Método de Halley</h4>
+          <div class="ht-body">
+            <p>Edmund Halley propuso usar el tránsito para medir la distancia Tierra-Sol mediante la paralaje. Si dos observadores distantes en la Tierra registraban los tiempos exactos del tránsito, la geometría revelaría la escala del Sistema Solar. Halley nunca vería su método aplicado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-item" data-index="2">
+        <div class="ht-dot"></div>
+        <div class="ht-year">1761–1769</div>
+        <div class="ht-card">
+          <h4>Las Grandes Expediciones Científicas</h4>
+          <div class="ht-body">
+            <p>Más de 150 observaciones desde cinco continentes. El Capitán James Cook fue enviado a Tahití en 1769. Los datos recogidos permitieron calcular por primera vez la escala real del Sistema Solar, un resultado descrito como "el más noble problema de la astronomía".</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-item" data-index="3">
+        <div class="ht-dot"></div>
+        <div class="ht-year">1771</div>
+        <div class="ht-card">
+          <h4>La Unidad Astronómica Calculada</h4>
+          <div class="ht-body">
+            <p>Jérôme Lalande calculó la primera estimación precisa de la Unidad Astronómica: ~153 millones de km (el valor real es 149.6 millones). Por primera vez en la historia, la humanidad conocía las dimensiones reales del Sistema Solar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-item" data-index="4">
+        <div class="ht-dot"></div>
+        <div class="ht-year">1874–1882</div>
+        <div class="ht-card">
+          <h4>Era Fotográfica</h4>
+          <div class="ht-body">
+            <p>Los tránsitos de 1874 y 1882 fueron fotografiados por primera vez. Esto permitió mediciones más precisas, aunque el misterioso "efecto de la gota negra" siguió introduciendo errores que no se comprendieron hasta el siglo XXI.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-item" data-index="5">
+        <div class="ht-dot"></div>
+        <div class="ht-year">2004–2012</div>
+        <div class="ht-card">
+          <h4>El Último Par de Tránsitos</h4>
+          <div class="ht-body">
+            <p>Los tránsitos del 8 de junio de 2004 y 5–6 de junio de 2012 fueron los últimos del siglo. Millones los observaron. Los científicos los usaron para calibrar métodos modernos de detección de exoplanetas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-item" data-index="6">
+        <div class="ht-dot"></div>
+        <div class="ht-year">Siglo XXI</div>
+        <div class="ht-card">
+          <h4>Del Tránsito al Descubrimiento de Exoplanetas</h4>
+          <div class="ht-body">
+            <p>El telescopio Kepler y TESS aplican el mismo principio del tránsito para detectar planetas en otras estrellas. Se han confirmado más de 5,500 exoplanetas usando este método. El próximo tránsito de Venus ocurrirá el <strong>11 de diciembre de 2117</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- fin .htimeline -->
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <span class="nav-logo-dot"></span>
+        TRÁNSITO DE VENUS
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="sol.html">El Sol</a>
+        <a href="venus.html">Venus</a>
+        <a href="tierra.html">Tierra</a>
+        <a href="exoplanetas.html">Simulación</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+      <div class="footer-note">Próximo tránsito de Venus: <strong>11 de diciembre de 2117</strong></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

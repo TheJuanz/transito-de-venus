@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El Sol — Tránsito de Venus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-sol">
+
+  <!-- NAVEGACIÓN -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-dot"></span>
+      TRÁNSITO DE VENUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sol.html" class="active">El Sol</a></li>
+      <li><a href="venus.html">Venus</a></li>
+      <li><a href="tierra.html">Tierra</a></li>
+      <li><a href="exoplanetas.html">Simulación</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ESTRELLAS DE FONDO -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- CONTENIDO -->
+  <div class="planet-page sol-page">
+    <div class="planet-hero">
+      <div class="planet-display sol-display">
+        <div class="planet-big sol-big">
+          <div class="sol-surface-anim"></div>
+          <div class="sol-corona-anim"></div>
+          <div class="sol-flare"></div>
+          <div class="sol-flare sol-flare-2"></div>
+        </div>
+        <div class="sol-glow-outer"></div>
+      </div>
+    </div>
+
+    <div class="planet-content">
+      <a class="back-btn" href="index.html">← Volver al inicio</a>
+      <div class="planet-tag">LA ESTRELLA DE NUESTRA VIDA</div>
+      <h1 class="planet-title">El <em>Sol</em></h1>
+
+      <div class="planet-facts">
+        <div class="fact-item">
+          <span class="fact-icon">☀️</span>
+          <div>
+            <strong>Diámetro</strong>
+            <span>1,392,700 km</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🔥</span>
+          <div>
+            <strong>Temperatura superficial</strong>
+            <span>5,500 °C</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">⚡</span>
+          <div>
+            <strong>Tipo estelar</strong>
+            <span>Enana amarilla (G2V)</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🌌</span>
+          <div>
+            <strong>Edad</strong>
+            <span>4,600 millones de años</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="planet-text">
+        <h3>¿Qué es el Sol?</h3>
+        <p>El Sol es la estrella central de nuestro Sistema Solar, una gigantesca esfera de plasma que genera energía mediante fusión nuclear en su núcleo, donde la temperatura alcanza los 15 millones de grados Celsius. Representa el 99.86% de toda la masa del Sistema Solar y su gravedad mantiene en órbita a los ocho planetas, sus lunas, asteroides, cometas y otros cuerpos menores.</p>
+
+        <h3>Su Papel en el Tránsito</h3>
+        <p>El Sol es el telón de fondo luminoso sin el cual el tránsito no sería visible. Al ser una esfera brillante de enorme extensión angular vista desde la Tierra, proporciona el "lienzo" sobre el cual Venus se proyecta. La diferencia de luminosidad es tan grande que Venus, aun siendo un planeta completo, aparece como una mancha diminuta y oscura sobre la superficie solar.</p>
+
+        <h3>¿Por Qué el Tránsito se Ve como un Punto Negro?</h3>
+        <p>Venus no emite luz propia: refleja la luz solar. Al posicionarse entre el Sol y la Tierra durante el tránsito, el lado de Venus que nos "mira" está en sombra. Esto lo convierte en un disco perfectamente oscuro sobre el brillantísimo fondo solar. En 2004 y 2012, los astrónomos detectaron incluso el "efecto del anillo": un destello de luz alrededor de Venus cuando tocaba el limbo solar, causado por la refracción de la luz en la atmósfera venusina.</p>
+
+        <h3>La Cromosfera y la Corona Solar</h3>
+        <p>Durante el tránsito, los astrónomos han aprovechado para estudiar las capas externas del Sol. La cromosfera —capa de unos 2,000 km de espesor sobre la fotosfera— y la corona —que se extiende millones de kilómetros— son más fáciles de analizar cuando Venus las atraviesa con su disco bien definido. Esto ha permitido mejorar los modelos de la atmósfera solar.</p>
+      </div>
+
+      <div class="planet-nav-row">
+        <a href="venus.html" class="planet-nav-btn">Siguiente: Venus →</a>
+        <a href="exoplanetas.html" class="planet-nav-btn planet-nav-btn-alt">Ver simulación →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <span class="nav-logo-dot"></span>
+        TRÁNSITO DE VENUS
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="sol.html">El Sol</a>
+        <a href="venus.html">Venus</a>
+        <a href="tierra.html">Tierra</a>
+        <a href="exoplanetas.html">Simulación</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+      <div class="footer-note">Próximo tránsito de Venus: <strong>11 de diciembre de 2117</strong></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

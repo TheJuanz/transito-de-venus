@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Tierra — Tránsito de Venus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-tierra">
+
+  <!-- NAVEGACIÓN -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-dot"></span>
+      TRÁNSITO DE VENUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sol.html">El Sol</a></li>
+      <li><a href="venus.html">Venus</a></li>
+      <li><a href="tierra.html" class="active">Tierra</a></li>
+      <li><a href="exoplanetas.html">Simulación</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ESTRELLAS DE FONDO -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- CONTENIDO -->
+  <div class="planet-page">
+    <div class="planet-hero">
+      <div class="planet-display earth-display">
+        <div class="planet-big earth-big">
+          <div class="planet-surface earth-surface"></div>
+          <div class="earth-clouds"></div>
+          <div class="planet-atmosphere earth-atm"></div>
+        </div>
+        <div class="planet-shadow"></div>
+      </div>
+    </div>
+
+    <div class="planet-content">
+      <a class="back-btn" href="index.html">← Volver al inicio</a>
+      <div class="planet-tag">EL OBSERVATORIO CÓSMICO</div>
+      <h1 class="planet-title">La <em>Tierra</em></h1>
+
+      <div class="planet-facts">
+        <div class="fact-item">
+          <span class="fact-icon">🌍</span>
+          <div>
+            <strong>Diámetro</strong>
+            <span>12,742 km</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">⏱</span>
+          <div>
+            <strong>Año orbital</strong>
+            <span>365.25 días</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">📏</span>
+          <div>
+            <strong>Distancia al Sol</strong>
+            <span>149.6 mill. km (1 UA)</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🌡</span>
+          <div>
+            <strong>Temperatura media</strong>
+            <span>15 °C</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="planet-text">
+        <h3>Características Principales</h3>
+        <p>La Tierra es el tercer planeta del Sistema Solar y el único conocido que alberga vida. Con un diámetro de 12,742 km, posee una atmósfera rica en nitrógeno y oxígeno que la protege de la radiación solar y regula su temperatura. Su superficie está cubierta en un 71% por agua líquida, y su campo magnético la protege del viento solar.</p>
+
+        <h3>El Papel de la Tierra en el Tránsito</h3>
+        <p>La Tierra actúa como la plataforma de observación desde la cual es posible presenciar el tránsito de Venus. Su posición en el Sistema Solar, a 1 Unidad Astronómica del Sol, es el punto exacto desde donde Venus puede proyectarse como un disco oscuro sobre la cara solar. Sin la perspectiva terrestre, no existiría el fenómeno observable tal como lo conocemos.</p>
+
+        <h3>¿Por qué Podemos Observarlo?</h3>
+        <p>La Tierra, Venus y el Sol deben alinearse casi perfectamente. Venus orbita el Sol más cerca que la Tierra (a 0.72 UA), por lo que periódicamente se interpone entre ambos. Sin embargo, debido a la inclinación de 3.4° de la órbita venusiana, solo en momentos muy específicos esta alineación es lo suficientemente precisa como para producir un tránsito visible. Los astrónomos han aprovechado este fenómeno para medir con gran precisión la distancia Tierra-Sol usando el método de la paralaje solar.</p>
+
+        <h3>La Tierra como Referencia Astronómica</h3>
+        <p>La distancia Tierra-Sol (1 UA = 149.6 millones de km) se convirtió en la unidad fundamental de medida del cosmos gracias a los tránsitos de Venus. Todo el Sistema Solar puede describirse en múltiplos de esta unidad. Saturno está a 9.5 UA, y la estrella más cercana, Próxima Centauri, a 268,000 UA. El tránsito de Venus fue la llave que abrió la escala del universo.</p>
+      </div>
+
+      <div class="planet-nav-row">
+        <a href="exoplanetas.html" class="planet-nav-btn">Ver simulación →</a>
+        <a href="quiz.html" class="planet-nav-btn planet-nav-btn-alt">Ir al Quiz →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <span class="nav-logo-dot"></span>
+        TRÁNSITO DE VENUS
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="sol.html">El Sol</a>
+        <a href="venus.html">Venus</a>
+        <a href="tierra.html">Tierra</a>
+        <a href="exoplanetas.html">Simulación</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+      <div class="footer-note">Próximo tránsito de Venus: <strong>11 de diciembre de 2117</strong></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

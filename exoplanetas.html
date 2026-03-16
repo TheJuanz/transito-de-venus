@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulación de Exoplanetas — Tránsito de Venus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-exoplanetas">
+
+  <!-- NAVEGACIÓN -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-dot"></span>
+      TRÁNSITO DE VENUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sol.html">El Sol</a></li>
+      <li><a href="venus.html">Venus</a></li>
+      <li><a href="tierra.html">Tierra</a></li>
+      <li><a href="exoplanetas.html" class="active">Simulación</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ESTRELLAS DE FONDO -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- ============================================================
+       SECCIÓN DE EXOPLANETAS
+       ============================================================ -->
+  <section id="simulacion" class="exo-sim-page">
+
+    <a class="back-btn" href="index.html">← Volver al inicio</a>
+
+    <!-- ENCABEZADO -->
+    <div class="exosim-hero">
+      <div class="exosim-tag">MÉTODO DEL TRÁNSITO</div>
+      <h1 class="exosim-title">Cómo descubrimos exoplanetas<br/><em>usando el método del tránsito</em></h1>
+    </div>
+
+    <!-- TARJETAS INTRODUCTORIAS -->
+    <div class="exosim-intro-grid">
+      <div class="exosim-intro-card">
+        <div class="exosim-intro-icon">🪐</div>
+        <h3>¿Qué es un exoplaneta?</h3>
+        <p>Un exoplaneta es cualquier planeta que orbita una estrella diferente al Sol. Hasta la fecha se han confirmado más de 5,500 exoplanetas en nuestra galaxia. La mayoría son invisibles a nuestros telescopios directamente —los detectamos de forma indirecta.</p>
+      </div>
+      <div class="exosim-intro-card">
+        <div class="exosim-intro-icon">🔭</div>
+        <h3>¿Qué es el método del tránsito?</h3>
+        <p>Es la misma técnica que permitió medir la distancia Tierra-Sol con el tránsito de Venus. Cuando un planeta pasa frente a su estrella, bloquea una pequeña fracción de su luz, produciendo una caída medible en el brillo estelar.</p>
+      </div>
+      <div class="exosim-intro-card">
+        <div class="exosim-intro-icon">📉</div>
+        <h3>La curva de luz</h3>
+        <p>Los astrónomos miden el brillo de una estrella a lo largo del tiempo. Si ese brillo cae de forma periódica y repetida, es una señal clara de que un planeta la está orbitando. La profundidad de la caída revela el tamaño relativo del planeta.</p>
+      </div>
+      <div class="exosim-intro-card">
+        <div class="exosim-intro-icon">✨</div>
+        <h3>Del tránsito de Venus a Kepler</h3>
+        <p>El telescopio espacial Kepler y su sucesor TESS usan exactamente este método. Kepler observó más de 150,000 estrellas simultáneamente, detectando caídas de brillo de apenas el 0.01%. El tránsito de Venus fue el primer laboratorio de esta técnica.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         SIMULACIÓN INTERACTIVA v2 — Kepler / TESS
+         ══════════════════════════════════════════ -->
+    <div class="sim-wrapper" id="sim-wrapper">
+
+      <!-- Cabecera + controles -->
+      <div class="sim-header">
+        <div class="sim-header-text">
+          <div class="exosim-tag">SIMULACIÓN INTERACTIVA · ESTILO KEPLER / TESS</div>
+          <h2 class="sim-title">Laboratorio de Detección de Exoplanetas</h2>
+          <p class="sim-subtitle">Observa la estrella como lo haría un telescopio espacial real. Analiza la curva de luz e identifica qué sistema estás observando.</p>
+        </div>
+        <div class="sim-controls">
+          <button class="btn-generate" id="btn-generate" onclick="generateSystem()">
+            <span class="btn-generate-icon">⚡</span>
+            Nueva observación
+          </button>
+          <div class="speed-control">
+            <span class="speed-label">VELOCIDAD</span>
+            <div class="speed-btns">
+              <button class="speed-btn" data-speed="0.4" onclick="setSpeed(0.4)">0.5×</button>
+              <button class="speed-btn active" data-speed="1" onclick="setSpeed(1)">1×</button>
+              <button class="speed-btn" data-speed="2.5" onclick="setSpeed(2.5)">2.5×</button>
+            </div>
+          </div>
+          <!-- MODO ASTRÓNOMO -->
+          <button class="btn-astronomer" id="btn-astronomer" onclick="toggleAstronomerMode()">
+            🔬 Modo Astrónomo
+          </button>
+        </div>
+      </div>
+
+      <!-- Pantalla idle -->
+      <div class="sim-idle" id="sim-idle">
+        <div class="sim-idle-scope">
+          <div class="scope-ring scope-ring-1"></div>
+          <div class="scope-ring scope-ring-2"></div>
+          <div class="scope-ring scope-ring-3"></div>
+          <div class="sim-idle-star"></div>
+        </div>
+        <p>Presiona <strong>"Nueva observación"</strong> para apuntar el telescopio hacia una estrella</p>
+      </div>
+
+      <!-- Panel principal -->
+      <div class="sim-main" id="sim-main" style="display:none;">
+
+        <!-- Panel telescópico -->
+        <div class="sim-telescope-row">
+          <div class="sim-panel-label-row">
+            <span class="sim-panel-label">VISTA TELESCÓPICA</span>
+            <span class="sim-star-badge" id="sim-star-name">Kepler-452</span>
+            <span class="sim-live-badge"><span class="live-dot"></span>EN VIVO</span>
+          </div>
+          <div class="telescope-frame">
+            <canvas id="telescope-canvas"></canvas>
+            <div class="vignette"></div>
+            <div class="reticle">
+              <div class="reticle-h"></div>
+              <div class="reticle-v"></div>
+              <div class="reticle-circle reticle-c1"></div>
+              <div class="reticle-circle reticle-c2"></div>
+            </div>
+            <div class="hud hud-tl">
+              <div class="hud-line" id="hud-time">T+00:00:00</div>
+              <div class="hud-line" id="hud-mag">MAG: —</div>
+            </div>
+            <div class="hud hud-tr">
+              <div class="hud-line" id="hud-inst">KEPLER PHOTOMETER</div>
+              <div class="hud-line" id="hud-band">BAND: 430–890 nm</div>
+            </div>
+            <div class="hud hud-bl" id="hud-transit-alert" style="opacity:0;">
+              <div class="hud-alert">⚠ VARIACIÓN DETECTADA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel curva de luz -->
+        <div class="sim-light-row">
+          <div class="sim-panel-label-row">
+            <span class="sim-panel-label">FOTOMETRÍA — CURVA DE LUZ</span>
+            <span class="sim-panel-sublabel" id="lc-points-count">0 / 700 puntos</span>
+          </div>
+          <canvas id="lightcurve-canvas"></canvas>
+          <div class="lc-footer">
+            <span class="lc-footer-item">
+              <span class="lc-legend-dot lc-dot-signal"></span>Señal fotométrica
+            </span>
+            <span class="lc-footer-item">
+              <span class="lc-legend-dot lc-dot-trend"></span>Línea de referencia
+            </span>
+            <span class="lc-footer-item lc-footer-right">
+              Ruido instrumental: ±0.1%
+            </span>
+          </div>
+        </div>
+
+        <!-- PANEL MODO ASTRÓNOMO (oculto por defecto) -->
+        <div class="astronomer-panel" id="astronomer-panel" style="display:none;">
+          <div class="astro-panel-title">
+            <span>🔬</span> Datos Científicos — Modo Astrónomo
+          </div>
+          <div class="astro-data-grid" id="astro-data-grid">
+            <div class="astro-datum">
+              <div class="astro-datum-label">PROFUNDIDAD DEL TRÁNSITO</div>
+              <div class="astro-datum-value" id="astro-depth">—</div>
+              <div class="astro-datum-unit">% de oscurecimiento</div>
+            </div>
+            <div class="astro-datum">
+              <div class="astro-datum-label">RADIO ESTIMADO DEL PLANETA</div>
+              <div class="astro-datum-value" id="astro-radius">—</div>
+              <div class="astro-datum-unit">R⊕ (radios terrestres)</div>
+            </div>
+            <div class="astro-datum">
+              <div class="astro-datum-label">PERÍODO ORBITAL</div>
+              <div class="astro-datum-value" id="astro-period">—</div>
+              <div class="astro-datum-unit">días simulados</div>
+            </div>
+            <div class="astro-datum">
+              <div class="astro-datum-label">BRILLO ESTELAR RELATIVO</div>
+              <div class="astro-datum-value" id="astro-brightness">—</div>
+              <div class="astro-datum-unit">magnitud relativa</div>
+            </div>
+            <div class="astro-datum">
+              <div class="astro-datum-label">DURACIÓN DEL TRÁNSITO</div>
+              <div class="astro-datum-value" id="astro-duration">—</div>
+              <div class="astro-datum-unit">horas (simuladas)</div>
+            </div>
+            <div class="astro-datum">
+              <div class="astro-datum-label">TIPO ESTELAR</div>
+              <div class="astro-datum-value" id="astro-type">—</div>
+              <div class="astro-datum-unit">clasificación espectral</div>
+            </div>
+          </div>
+          <div class="astro-note">
+            Así analiza sus datos el telescopio espacial Kepler (2009–2018) y TESS (2018–presente).
+          </div>
+        </div>
+
+      </div><!-- fin sim-main -->
+
+      <!-- QUIZ INTERACTIVO -->
+      <div class="sim-quiz" id="sim-quiz" style="display:none;">
+        <div class="quiz-question">
+          <span class="quiz-icon">🧠</span>
+          ¿Qué crees que está ocurriendo en este sistema?
+        </div>
+        <div class="quiz-hint">Analiza la profundidad y frecuencia de las caídas en la curva de luz.</div>
+        <div class="quiz-options" id="quiz-options">
+          <button class="quiz-option" onclick="checkAnswer('small')" data-value="small">
+            <span class="quiz-option-icon">🔵</span>
+            <div class="quiz-option-content">
+              <strong>Planeta tipo Tierra</strong>
+              <span>Caída pequeña y periódica</span>
+            </div>
+          </button>
+          <button class="quiz-option" onclick="checkAnswer('giant')" data-value="giant">
+            <span class="quiz-option-icon">🟠</span>
+            <div class="quiz-option-content">
+              <strong>Planeta tipo Júpiter</strong>
+              <span>Caída profunda y pronunciada</span>
+            </div>
+          </button>
+          <button class="quiz-option" onclick="checkAnswer('multi')" data-value="multi">
+            <span class="quiz-option-icon">🟣</span>
+            <div class="quiz-option-content">
+              <strong>Sistema multiplanetario</strong>
+              <span>Varias caídas de distinta profundidad</span>
+            </div>
+          </button>
+          <button class="quiz-option" onclick="checkAnswer('none')" data-value="none">
+            <span class="quiz-option-icon">⚫</span>
+            <div class="quiz-option-content">
+              <strong>Sin planetas detectables</strong>
+              <span>Curva de luz plana con solo ruido</span>
+            </div>
+          </button>
+        </div>
+        <div class="quiz-result" id="quiz-result" style="display:none;">
+          <div class="quiz-result-icon" id="quiz-result-icon"></div>
+          <div class="quiz-result-text">
+            <div class="quiz-result-verdict" id="quiz-result-verdict"></div>
+            <div class="quiz-result-explanation" id="quiz-result-explanation"></div>
+          </div>
+        </div>
+        <button class="btn-retry" id="btn-retry" style="display:none;" onclick="generateSystem()">
+          Nueva observación →
+        </button>
+      </div>
+
+    </div><!-- fin .sim-wrapper -->
+
+    <!-- CÓDIGO QR -->
+    <div class="qr-section">
+      <div class="qr-inner">
+        <div class="qr-text-col">
+          <div class="exosim-tag">ACCESO DIRECTO</div>
+          <h3 class="qr-title">Comparte la simulación</h3>
+          <p class="qr-desc">Escanea para probar la simulación de detección de exoplanetas</p>
+          <p class="qr-url" id="qr-url-text">tusitio.com/exoplanetas.html#simulacion</p>
+        </div>
+        <div class="qr-code-col">
+          <div class="qr-frame">
+            <canvas id="qr-canvas" width="180" height="180"></canvas>
+          </div>
+          <p class="qr-caption">Escanea para probar esta simulación<br/>de detección de exoplanetas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exo-page-footer-nav">
+      <a href="quiz.html" class="planet-nav-btn">¿Listo para el quiz? →</a>
+    </div>
+
+  </section><!-- fin #simulacion -->
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <span class="nav-logo-dot"></span>
+        TRÁNSITO DE VENUS
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="sol.html">El Sol</a>
+        <a href="venus.html">Venus</a>
+        <a href="tierra.html">Tierra</a>
+        <a href="exoplanetas.html">Simulación</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+      <div class="footer-note">Próximo tránsito de Venus: <strong>11 de diciembre de 2117</strong></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

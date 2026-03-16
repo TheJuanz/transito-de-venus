@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venus — Tránsito de Venus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-venus">
+
+  <!-- NAVEGACIÓN -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-dot"></span>
+      TRÁNSITO DE VENUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sol.html">El Sol</a></li>
+      <li><a href="venus.html" class="active">Venus</a></li>
+      <li><a href="tierra.html">Tierra</a></li>
+      <li><a href="exoplanetas.html">Simulación</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ESTRELLAS DE FONDO -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- CONTENIDO -->
+  <div class="planet-page">
+    <div class="planet-hero">
+      <div class="planet-display venus-display">
+        <div class="planet-big venus-big">
+          <div class="planet-surface venus-surface-big"></div>
+          <div class="venus-clouds"></div>
+          <div class="planet-atmosphere venus-atm"></div>
+        </div>
+        <div class="planet-shadow venus-shadow"></div>
+      </div>
+    </div>
+
+    <div class="planet-content">
+      <a class="back-btn" href="index.html">← Volver al inicio</a>
+      <div class="planet-tag">EL MENSAJERO OSCURO</div>
+      <h1 class="planet-title"><em>Venus</em></h1>
+
+      <div class="planet-facts">
+        <div class="fact-item">
+          <span class="fact-icon">🌑</span>
+          <div>
+            <strong>Diámetro</strong>
+            <span>12,104 km</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">⏱</span>
+          <div>
+            <strong>Año orbital</strong>
+            <span>224.7 días</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">📏</span>
+          <div>
+            <strong>Distancia al Sol</strong>
+            <span>108.2 mill. km (0.72 UA)</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🌡</span>
+          <div>
+            <strong>Temperatura media</strong>
+            <span>465 °C</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="planet-text">
+        <h3>Características Físicas</h3>
+        <p>Venus es el segundo planeta del Sistema Solar y el más parecido a la Tierra en tamaño y masa, razón por la que se le llama "el planeta gemelo". Sin embargo, es un mundo radicalmente diferente: su atmósfera densa de dióxido de carbono genera un efecto invernadero extremo que eleva la temperatura superficial a 465 °C, más caliente que Mercurio. Su presión atmosférica es 92 veces la terrestre.</p>
+
+        <h3>Su Órbita y Por Qué Produce Tránsitos</h3>
+        <p>Venus orbita el Sol cada 224.7 días a una distancia promedio de 108 millones de kilómetros. Al estar más cerca del Sol que la Tierra, Venus es un "planeta interior" y puede posicionarse entre el Sol y nosotros. Esta es la condición necesaria para el tránsito. Sin embargo, su órbita está inclinada 3.4° respecto al plano de la eclíptica terrestre, por lo que las alineaciones perfectas son extraordinariamente raras.</p>
+
+        <h3>Tránsito vs. Eclipse: ¿Cuál es la Diferencia?</h3>
+        <p>Aunque ambos son fenómenos de "interposición", son muy distintos. Un <strong>eclipse solar</strong> ocurre cuando la Luna, que está mucho más cerca de la Tierra, bloquea completamente el Sol durante minutos. En contraste, el <strong>tránsito de Venus</strong> ocurre cuando Venus, siendo unas 30 veces más pequeño en apariencia angular desde la Tierra, solo oscurece una fracción diminuta del disco solar. Nunca puede producir un eclipse total.</p>
+
+        <h3>La Atmósfera de Venus y el Anillo de Luz</h3>
+        <p>Durante los tránsitos de 2004 y 2012, se observó el "efecto de aureola": un tenue anillo luminoso alrededor de Venus cuando rozaba el limbo solar. Este fenómeno, predicho en el siglo XVIII y confirmado en el XXI, es causado por la refracción de la luz solar en la densa atmósfera venusina. Fue la primera detección de la atmósfera de Venus en más de 200 años de tránsitos observados.</p>
+      </div>
+
+      <div class="planet-nav-row">
+        <a href="tierra.html" class="planet-nav-btn">Siguiente: Tierra →</a>
+        <a href="exoplanetas.html" class="planet-nav-btn planet-nav-btn-alt">Ver simulación →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <span class="nav-logo-dot"></span>
+        TRÁNSITO DE VENUS
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="sol.html">El Sol</a>
+        <a href="venus.html">Venus</a>
+        <a href="tierra.html">Tierra</a>
+        <a href="exoplanetas.html">Simulación</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+      <div class="footer-note">Próximo tránsito de Venus: <strong>11 de diciembre de 2117</strong></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

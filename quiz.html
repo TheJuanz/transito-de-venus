@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz — Tránsito de Venus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-quiz">
+
+  <!-- NAVEGACIÓN -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-dot"></span>
+      TRÁNSITO DE VENUS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sol.html">El Sol</a></li>
+      <li><a href="venus.html">Venus</a></li>
+      <li><a href="tierra.html">Tierra</a></li>
+      <li><a href="exoplanetas.html">Simulación</a></li>
+      <li><a href="quiz.html" class="active">Quiz</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ESTRELLAS DE FONDO -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- ============================================================
+       QUIZ PRINCIPAL
+       ============================================================ -->
+  <div class="quiz-page">
+
+    <!-- HERO -->
+    <div class="quiz-hero">
+      <div class="quiz-page-tag">EVALUACIÓN FINAL</div>
+      <h1 class="quiz-page-title">¿Cuánto aprendiste sobre<br/><em>el tránsito de Venus?</em></h1>
+      <p class="quiz-page-sub">5 preguntas · Tiempo ilimitado · Responde y aprende</p>
+    </div>
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="quiz-progress-bar-wrap" id="quiz-progress-wrap">
+      <div class="quiz-progress-info">
+        <span id="q-progress-text">Pregunta 1 de 5</span>
+        <span id="q-score-live">Aciertos: 0</span>
+      </div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR DE PREGUNTAS -->
+    <div class="quiz-container" id="quiz-container">
+
+      <!-- PREGUNTA 1 -->
+      <div class="qz-question" data-q="0" id="q0">
+        <div class="qz-num">01</div>
+        <h2 class="qz-text">¿Qué es el tránsito de Venus?</h2>
+        <div class="qz-options">
+          <button class="qz-option" data-q="0" data-i="0">Venus pasa detrás del Sol</button>
+          <button class="qz-option" data-q="0" data-i="1">Venus pasa frente al Sol visto desde la Tierra</button>
+          <button class="qz-option" data-q="0" data-i="2">Venus eclipsa a la Tierra</button>
+          <button class="qz-option" data-q="0" data-i="3">Venus orbita la Tierra</button>
+        </div>
+        <div class="qz-feedback" id="feedback-0" style="display:none;"></div>
+      </div>
+
+      <!-- PREGUNTA 2 -->
+      <div class="qz-question" data-q="1" id="q1" style="display:none;">
+        <div class="qz-num">02</div>
+        <h2 class="qz-text">¿Por qué es importante el tránsito de Venus en astronomía?</h2>
+        <div class="qz-options">
+          <button class="qz-option" data-q="1" data-i="0">Permite medir la masa de la Tierra</button>
+          <button class="qz-option" data-q="1" data-i="1">Permite ver el interior del Sol</button>
+          <button class="qz-option" data-q="1" data-i="2">Permite medir la distancia Tierra-Sol</button>
+          <button class="qz-option" data-q="1" data-i="3">Permite calcular la edad del Sol</button>
+        </div>
+        <div class="qz-feedback" id="feedback-1" style="display:none;"></div>
+      </div>
+
+      <!-- PREGUNTA 3 -->
+      <div class="qz-question" data-q="2" id="q2" style="display:none;">
+        <div class="qz-num">03</div>
+        <h2 class="qz-text">¿Cómo se descubren muchos exoplanetas?</h2>
+        <div class="qz-options">
+          <button class="qz-option" data-q="2" data-i="0">Escuchando ondas de radio</button>
+          <button class="qz-option" data-q="2" data-i="1">Observando eclipses lunares</button>
+          <button class="qz-option" data-q="2" data-i="2">Midiendo el brillo de las estrellas</button>
+          <button class="qz-option" data-q="2" data-i="3">Enviando sondas a otras estrellas</button>
+        </div>
+        <div class="qz-feedback" id="feedback-2" style="display:none;"></div>
+      </div>
+
+      <!-- PREGUNTA 4 -->
+      <div class="qz-question" data-q="3" id="q3" style="display:none;">
+        <div class="qz-num">04</div>
+        <h2 class="qz-text">¿Qué indica una caída en la curva de luz de una estrella?</h2>
+        <div class="qz-options">
+          <button class="qz-option" data-q="3" data-i="0">La estrella explota</button>
+          <button class="qz-option" data-q="3" data-i="1">Un planeta está pasando frente a ella</button>
+          <button class="qz-option" data-q="3" data-i="2">La estrella desaparece</button>
+          <button class="qz-option" data-q="3" data-i="3">Hay una tormenta solar</button>
+        </div>
+        <div class="qz-feedback" id="feedback-3" style="display:none;"></div>
+      </div>
+
+      <!-- PREGUNTA 5 -->
+      <div class="qz-question" data-q="4" id="q4" style="display:none;">
+        <div class="qz-num">05</div>
+        <h2 class="qz-text">¿Cuándo ocurrirá el próximo tránsito de Venus?</h2>
+        <div class="qz-options">
+          <button class="qz-option" data-q="4" data-i="0">En el año 2050</button>
+          <button class="qz-option" data-q="4" data-i="1">En el año 2117</button>
+          <button class="qz-option" data-q="4" data-i="2">En el año 2200</button>
+          <button class="qz-option" data-q="4" data-i="3">Ya no ocurrirá más</button>
+        </div>
+        <div class="qz-feedback" id="feedback-4" style="display:none;"></div>
+      </div>
+
+    </div><!-- fin .quiz-container -->
+
+    <!-- RESULTADO FINAL (oculto hasta terminar) -->
+    <div class="quiz-result-final" id="quiz-result-final" style="display:none;">
+      <div class="result-score-circle">
+        <div class="result-score-inner">
+          <span class="result-score-num" id="result-score-num">0</span>
+          <span class="result-score-den">/5</span>
+        </div>
+      </div>
+      <div class="result-title" id="result-title">Calculando…</div>
+      <div class="result-message" id="result-message"></div>
+      <div class="result-breakdown" id="result-breakdown"></div>
+      <div class="result-actions">
+        <button class="btn-primary" onclick="restartQuiz()">Repetir el quiz</button>
+        <a href="exoplanetas.html" class="btn-primary btn-primary-alt">Ver simulación</a>
+      </div>
+    </div>
+
+  </div><!-- fin .quiz-page -->
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <span class="nav-logo-dot"></span>
+        TRÁNSITO DE VENUS
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="sol.html">El Sol</a>
+        <a href="venus.html">Venus</a>
+        <a href="tierra.html">Tierra</a>
+        <a href="exoplanetas.html">Simulación</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+      <div class="footer-note">Próximo tránsito de Venus: <strong>11 de diciembre de 2117</strong></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
